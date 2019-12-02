@@ -2,19 +2,14 @@ const express = require("express"); //Iporta o modulo express para a varável ex
 const app = express();//Cria uma instancia (objeto) de express com o nome app
 const handlebars = require("express-handlebars");//Import da Template Egine handlebars
 const bodyparser = require("body-parser");
-const Sequelize = require('sequelize');
-
+const Post = require('./models/Post')
 
 //Config
     //Template Engine
     //Aqui estamos configurando o Handlebars como Template Engine dentro do Express
     app.engine('handlebars', handlebars({defaultLayout: 'main'}));
     app.set('view engine','handlebars');
-    //Configuração de acesso ao Banco de Dados
-    const sequelize = new Sequelize('test','root','ICTSD@tabase',{
-        host: "localhost",
-        dialect:"mysql"
-    });
+
     //Body-parser
     app.use(bodyparser.urlencoded({extended:false}));
     // app.use(bodyparser.json); Na aula utiliza, mas ao rodar deu problema
@@ -24,9 +19,22 @@ const Sequelize = require('sequelize');
         res.render('formulario');
     });
 
+    app.get('/', function(req,res){
+        res.render('home');
+    })
+
     app.post('/add', function(req, res){  //Vale lembrar também que rotas definidas como POST não são acessíveis pela URL
         // res.send("FORMULARIO RECEBIDO")
-        res.send("Texto:"+req.body.titulo+" Conteudo: "+req.body.conteudo);
+        // res.send("Texto:"+req.body.titulo+" Conteudo: "+req.body.conteudo);
+        Post.create({
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo
+        }).then(function(){
+            // res.send('POST CRIADO COM SUCESSO!');
+            res.redirect('/');//Em caso de sucesso, redireciona para a pagina "home"
+        }).catch(function(error){
+            res.send('FALHA NO POST: '+error);
+        })
     });
 
 app.listen("8081",
