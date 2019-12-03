@@ -2,7 +2,7 @@ const express = require("express"); //Iporta o modulo express para a varável ex
 const app = express();//Cria uma instancia (objeto) de express com o nome app
 const handlebars = require("express-handlebars");//Import da Template Egine handlebars
 const bodyparser = require("body-parser");
-const Post = require('./models/Post')
+const Post = require('./models/Post');
 
 //Config
     //Template Engine
@@ -20,8 +20,11 @@ const Post = require('./models/Post')
     });
 
     app.get('/', function(req,res){
-        res.render('home');
-    })
+        Post.findAll().then(function(allPosts){
+            console.log(allPosts);
+            res.render('home', {posts:allPosts});
+        });
+    });
 
     app.post('/add', function(req, res){  //Vale lembrar também que rotas definidas como POST não são acessíveis pela URL
         // res.send("FORMULARIO RECEBIDO")
