@@ -3,6 +3,7 @@ const app = express();
 const handlebars = require("express-handlebars");
 const bodyparser = require("body-parser");
 const models = require("./models");
+const path = require("path");
 
 //Config
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
@@ -11,11 +12,39 @@ app.set('view engine', 'handlebars');
 //body-parser
 app.use(bodyparser.urlencoded({extended:false}));
 
+//Pasta static
+app.use(express.static(path.join(__dirname, "statics")));
+
+//TODO - FAZER UMA BUSCA NA INICIALIZAÇÃO DO SISTEMA,
+//CRIAR SISTEMA DE MONITORAMENTO PARA NOVAS BUSCAS EM CASO DE ATUALIZAÇÃO DO BANCO
 app.get(
     '/',
     async(req, res) => {
         models.dbItemReg.findAll().then(function(allItens) {
-            res.render('home',{itens: allItens});
+            models.dbContracts.findAll().then(function(allContracts) {
+                models.dbCompanies.findAll().then(function(allCompanies) {
+                    models.dbModal.findAll().then(function(allModal) {
+                        models.dbComodityTypes.findAll().then(function(allTypes) {
+                            var parameters = {
+                                items: allItens,
+                                types: allTypes,
+                                modals: allModal,
+                                companies: allCompanies,
+                                contracts: allContracts
+                              };
+                            res.render('home',{allData: parameters})
+                        }).catch(err => {
+                            console.log("Error to render: " +err);
+                        })
+                    }).catch(err => {
+                        console.log("Error to render: " +err);
+                    })
+                }).catch(err => {
+                    console.log("Error to render: " +err);
+                })
+            }).catch(err => {
+                console.log("Error to render: " +err);
+            })
         }).catch(err => {
             console.log("Error to render: " +err);
         })

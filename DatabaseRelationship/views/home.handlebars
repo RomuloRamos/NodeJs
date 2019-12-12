@@ -1,31 +1,20 @@
-<h1>Opções de Cadastro:</h1>
-<form action="/cad_contrato" method="GET">
-    <h3>Cadastro de contrato</h3>
-    <button type="submit">Castrar Contrato</button>
-</form>
-<form action="/cad_fonecedor" method="GET">
-    <h3>Cadastro de fonecedor</h3>
-    <button type="submit">Castrar fornecedor</button>
-</form>
-<form action="/cad_item" method="GET">
-    <h3>Cadastro de Item</h3>
-    <button type="submit">Castrar Item</button>
-</form>
-<form action="/cad_type" method="GET">
-    <h3>Cadastro de Comodity Type</h3>
-    <button type="submit">Castrar Tipo de Comoditi</button>
-</form>
-
-<form action="/cad_modal" method="GET">
-    <h3>Cadastro de Modal</h3>
-    <button type="submit">Castrar Modal</button>
-</form>
-
 <h1>Lista de Itens: </h1>
+{{!-- <table>
+    {{#each allData}}
+        <tr>
+            <td>{{this}} Aqui fecha</td>
+        </tr>
+    {{/each}}
 
-{{#each posts}}
-    <h2>{{titulo}}</h2>
-    <h3>{{createdAt}}</h3>
-    <p>{{conteudo}}</p>
-    <hr>
+    <tr>
+        <td>{{allData}} Aqui fecha2</td>
+    </tr>
+</table> --}}
+{{#each allData as |item|}}
+    <p>{{item_Id}}</p>
+    <p>{{"purchasePercent"}}</p>
+    <p>{{"fk_ContractNumb"}}</p>
+    <p>{{"unitPrice"}}</p>
+    <p>{{"division"}}</p>
+    <p>{{firstDescription}}</p>
 {{/each}}
