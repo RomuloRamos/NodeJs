@@ -2,7 +2,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
+const models = require('./models');
 const app = express();
 const admin = require("./routes/");
 const path = require("path");
@@ -25,6 +25,10 @@ const path = require("path");
 
 //Outros
 const PORT = 8081;
-app.listen(PORT,()=>{
-    console.log("Servidor rodando!");
-})
+models.sequelize.sync({force:true})
+  .then(() => {
+    console.log("BlogApp - Database & tables created!")
+    app.listen(PORT,()=>{
+        console.log("BlogApp - Servidor rodando!");
+    })
+  })
