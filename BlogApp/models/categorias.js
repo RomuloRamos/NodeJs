@@ -17,11 +17,7 @@ module.exports = function(sequelize, Sequelize) {
             notEmpty: true,
             unique: true,
             allowNull: false,
-        },
-        // date: {
-        //     type: Date,
-        //     default: Date.now()
-        // }
+        }
     });
 
     return CATEGORIAS;

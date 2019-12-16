@@ -24,12 +24,16 @@ router.get('/categorias/add',(req, res) =>{
 
 });
 
-router.post('categorias/new', (req, res) =>{
-    // const newCategory = {
-    //     name = req.body.name,
-    //     slug = req.body.slug,
-    // }
-    // model.dbCategorias.create()
+router.post('/categorias/new', async(req, res) =>{
+    const newCategory = {
+        name: req.body.name,
+        slug: req.body.slug
+    }
+    model.dbCategorias.create(newCategory).then(()=>{
+        console.log("Admin - Nova categoria salva!");
+    }).catch(()=>{
+        console.log("Admin - Erro ao salvar categoria!");
+    })
 });
 
 module.exports = router;
