@@ -10,37 +10,37 @@ const session = require("express-session");
 const flash = require("connect-flash");
 
 
-//Configurações
-    // Sessão
-    app.use(session({
-      secret: "cursodenode",
-      resave: true,
-      saveUninitialized: true,
-    }));
-    app.use(flash());
-    //Midware
-    app.use((req, res, next)=>{
-      //Variaveis Globais
-      res.locals.success_msg = req.flash("Success_msg");
-      res.locals.error_msg = req.flash("Erro_msg");
-      next();
-    });
+// //Configurações
+//     // Sessão
+//     app.use(session({
+//       secret: "cursodenode",
+//       resave: true,
+//       saveUninitialized: true,
+//     }));
+//     app.use(flash());
+//     //Midware
+//     app.use((req, res, next)=>{
+//       //Variaveis Globais
+//       res.locals.success_msg = req.flash("Success_msg");
+//       res.locals.error_msg = req.flash("Erro_msg");
+//       next();
+//     });
 
-    //Body Parser
-    app.use(bodyParser.urlencoded({extended: true}));
-    // app.use(bodyParser.json);
+//     //Body Parser
+//     app.use(bodyParser.urlencoded({extended: true}));
+//     // app.use(bodyParser.json);
 
-    //Handlebars
-    app.engine('handlebars', handlebars({defaultLayout:'main'}));
-    app.set('view engine', 'handlebars');
+//     //Handlebars
+//     app.engine('handlebars', handlebars({defaultLayout:'main'}));
+//     app.set('view engine', 'handlebars');
 
-    //Pasta static
-    app.use(express.static(path.join(__dirname, "statics")));
+//     //Pasta static
+//     app.use(express.static(path.join(__dirname, "statics")));
 
-    app.use((req, res,next)=>{
-      console.log("Isso é um midware");
-      next();
-    })
+//     app.use((req, res,next)=>{
+//       console.log("Isso é um midware");
+//       next();
+//     })
 // Rotas
     app.use(admin);
 

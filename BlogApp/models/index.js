@@ -1,7 +1,12 @@
 const Sequelize = require("sequelize");
 const modelCategorias = require("./categorias");
 
-sequelize = new Sequelize('blogapp', 'root', 'Ub@tuba0703', {
+// sequelize = new Sequelize('blogapp', 'root', 'Ub@tuba0703', {
+//     host : 'localhost',
+//     dialect: 'mysql'
+// });
+
+sequelize = new Sequelize('DataBaseTest', 'root', 'ICTSD@tabase', {
     host : 'localhost',
     dialect: 'mysql'
 });

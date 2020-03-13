@@ -1,0 +1,29 @@
+setInterval(MyLoopFunction("1"), 100);
+setInterval(MyLoopFunction("2")), 100;
+setInterval(MyLoopFunction("3"), 100);
+setInterval(MyLoopFunction("4"), 100);
+setInterval(MyLoopFunction("5"), 100);
+
+setTimeout(MyLoopFunction("1"));
+setTimeout(MyLoopFunction("2"));
+setTimeout(MyLoopFunction("3"));
+setTimeout(MyLoopFunction("4"));
+setTimeout(MyLoopFunction("5"));
+
+setImmediate(MyLoopFunction("1"));
+setImmediate(MyLoopFunction("2"));
+setImmediate(MyLoopFunction("3"));
+setImmediate(MyLoopFunction("4"));
+setImmediate(MyLoopFunction("5"));
+
+MyLoopFunction("1");
+MyLoopFunction("2");
+MyLoopFunction("3");
+MyLoopFunction("4");
+MyLoopFunction("5");
+
+MyAsyncFunction(MyLoopFunction("1"), 100);
+MyAsyncFunction(MyLoopFunction("2")), 100;
+MyAsyncFunction(MyLoopFunction("3"), 100);
+MyAsyncFunction(MyLoopFunction("4"), 100);
+MyAsyncFunction(MyLoopFunction("5"), 100);
