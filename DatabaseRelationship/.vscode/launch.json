@@ -11,8 +11,7 @@
       // "skipFiles": [
       //     "<node_internals>/**"
       // ],
-      // "program": "${workspaceFolder}\\NodeStudies\\index.js",
-      "program": "${workspaceFolder}\\NodeStudies\\miner.js",
+      // "program": "${workspaceFolder}\\index.js",
       "console": "externalTerminal"
     }
   ]

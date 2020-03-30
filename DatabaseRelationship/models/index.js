@@ -6,10 +6,10 @@ const modelContracts = require("./dbContracts");
 const modelItemReg = require("./dbItemResgistration");
 const modelModal = require("./dbModal");
 
-sequelize = new Sequelize('DataBaseTest', 'root', 'ICTSD@tabase', {
-    host : 'localhost',
-    dialect: 'mysql'
-});
+// sequelize = new Sequelize('DATABASE_NAME', 'root', 'PASSWORD', {
+//     host : 'localhost',
+//     dialect: 'mysql'
+// });
 
 const dbModal = modelModal(sequelize, Sequelize);
 const dbComodityTypes= modelComodityTypes(sequelize, Sequelize);
