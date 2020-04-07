@@ -3,9 +3,14 @@ const crypto = require("crypto");
 
 module.exports = {
     async index(request, response) {
-        const ongs = await connection('ongs').select('*');
+        try {
+            const ongs = await connection('ongs').select('*');
+            
+            return response.json(ongs);
+        } catch (error){
+            return response.json(error);
+        }
         
-        return response.json(ongs);
     },
 
     async create(request, response) {
@@ -14,7 +19,8 @@ module.exports = {
     
         const id = crypto.randomBytes(4).toString('HEX');
         
-        await connection('ongs').insert({
+        try {
+            await connection('ongs').insert({
             id,
             name,
             email,
@@ -22,7 +28,9 @@ module.exports = {
             city,
             uf,
         })
-    
+        } catch(error){
+            console.log(error);
+        }
         return response.json({id});
     }
 };
