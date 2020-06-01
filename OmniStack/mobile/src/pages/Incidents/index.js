@@ -32,7 +32,7 @@ export default function Incident(){
         }
         setLoading(true);
         const response = await api.get('incidents', {
-            params: { name }
+            params: {page}
         });
         setIncidents([... incidents, ... response.data]);
         setTotal(response.headers['x-total-count']);
