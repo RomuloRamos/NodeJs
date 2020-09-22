@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
+import Translate from './components/Translate';
+import Route from './components/Route';
 
 const items = [
     {
@@ -34,16 +36,25 @@ const options = [
 ]
 
 const App = (props)=> {
-    const [selectedColor, setSelectedColor] = useState(options[0]);
-
+    const [option, setOption] = useState(options[0]);
     return (
         <div>
-            {/* <Search search= {items}/> */}
-            <Dropdown
-                selected = {selectedColor}
-                onSelectedChange={setSelectedColor}
-                options = {options} 
-            />
+            <Route path={'/'}>
+                <Accordion items={items}/>
+            </Route>
+            <Route path={'/list'}>
+                <Search />
+            </Route>        
+            <Route path={'/dropdown'}>
+                <Dropdown 
+                label="Select a color"
+                options={options}
+                selected = {option}
+                onSelectedChange = {setOption}/>    
+            </Route>
+            <Route path={'/translate'}>
+                <Translate />
+            </Route>    
         </div>
     );
 }
