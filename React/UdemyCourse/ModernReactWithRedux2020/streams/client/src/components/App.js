@@ -1,13 +1,14 @@
 import React from 'react';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import Streams from './streams';
-
+import Header from './Header';
 const App = ()=>{
 
     return (
         <div>
             <BrowserRouter>
-                <div>
+                <div className="ui container">
+                    <Header></Header>
                     <Route path='/' exact component={Streams.list}/>
                     <Route path='/streams/new' exact component={Streams.create}/>
                     <Route path='/streams/delete' exact component={Streams.delete}/>
