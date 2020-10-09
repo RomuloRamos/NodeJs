@@ -1,28 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter, Link } from 'react-router-dom';
-
-const PageOne = ()=>{
-    
-    return (
-        <div>
-            PageOne
-            <Link to="/pagetwo">Navigate to Page Two</Link>
-        </div>
-    );
-
-};
-
-const PageTwo = ()=>{
-    
-    return (
-        <div>
-            PageTwo
-            <button>Click Me!</button>
-            <Link to="/">Navigate to Page One</Link>
-        </div>
-    );
-
-};
+import Streams from './streams';
 
 const App = ()=>{
 
@@ -30,9 +8,12 @@ const App = ()=>{
         <div>
             <BrowserRouter>
                 <div>
-                    <Route path='/' exact component={PageOne}/>
-                    <Route path='/pagetwo' exact component={PageTwo}/> 
-                </div>
+                    <Route path='/' exact component={Streams.list}/>
+                    <Route path='/streams/new' exact component={Streams.create}/>
+                    <Route path='/streams/delete' exact component={Streams.delete}/>
+                    <Route path='/streams/show' exact component={Streams.show}/>
+                    <Route path='/streams/edit' exact component={Streams.edit}/> 
+                </div>  
             </BrowserRouter>
         </div>
     );
