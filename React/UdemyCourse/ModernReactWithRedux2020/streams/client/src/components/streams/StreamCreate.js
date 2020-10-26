@@ -14,29 +14,11 @@ class StreamCreate extends React.Component{
         
         return (
             <div>
-                
+                <h3>Create a Stream</h3>
+                <StreamForm onSubmit={this.onSubmit} ></StreamForm>
             </div>
         );
     }
 };
 
-const validate = formValues => {
-    const errors = {};
-
-    if(!formValues.title) {
-        errors.title = 'You must enter a title';
-    }
-
-    if(!formValues.description) {
-        errors.description = 'You must enter a description';
-    }
-
-    return errors;
-}
-
-const formWrapped =  reduxForm({
-    form: 'streamCreate',
-    validate: validate
-})(StreamCreate);
-
-export default connect(null, {createStream}) (formWrapped);
+export default connect(null, {createStream}) (StreamCreate);
