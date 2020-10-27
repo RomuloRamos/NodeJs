@@ -14,7 +14,7 @@ const App = ()=>{
                     <Header></Header>
                     <Route path='/' exact component={Streams.list}/>
                     <Route path='/streams/new' exact component={Streams.create}/>
-                    <Route path='/streams/delete' exact component={Streams.delete}/>
+                    <Route path='/streams/delete/:id' exact component={Streams.delete}/>
                     <Route path='/streams/show' exact component={Streams.show}/>
                     <Route path='/streams/edit/:id' exact component={Streams.edit}/> 
                 </div>  
