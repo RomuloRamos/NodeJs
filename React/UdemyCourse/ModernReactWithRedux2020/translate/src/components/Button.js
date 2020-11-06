@@ -6,8 +6,8 @@ class Button extends React.Component{
     //Replaced by consumer aproach
     // static contextType = LanguageContext;
 
-    renderConsumerReceivedLang(receivedValue){
-        return (receivedValue === 'english' ? 'Submit' : 'Voorleggen');
+    renderConsumerReceivedLang(language){
+        return (language === 'english' ? 'Submit' : 'Voorleggen');
     }
 
     renderConsumerReceivedColor(receivedValue){
@@ -15,7 +15,7 @@ class Button extends React.Component{
             <button className={`ui button ${receivedValue}`}>
                 {/* {text} */}
                 <LanguageContext.Consumer>
-                    {(receivedValue) => this.renderConsumerReceivedLang(receivedValue)}
+                    {({language}) => this.renderConsumerReceivedLang(language)}
                 </LanguageContext.Consumer>
             </button>
         );
